@@ -8,6 +8,10 @@ Plugins:     META (0.4), DevFiles (0.4)
 AlphaFeatures: compiled_setup_ml
 BuildTools: ocamlbuild
 
+Flag "ppx"
+  Description:  enable the ppx pattern-matching extension
+  Default:      false
+
 Library re
   Path:       lib
   InternalModules: Re_cset, Re_automata
@@ -69,6 +73,14 @@ Library fort_unit
   Modules: Fort_unit
   BuildDepends: oUnit
   Install: false
+
+Executable "re_ppx"
+  Path:             ppx
+  MainIs:           Re_ppx
+  CompiledObject:   best
+  BuildDepends:     compiler-libs.common, ppx_tools.metaquot
+  Build$:           flag(ppx)
+  Install$:         flag(ppx)
 
 Executable re_match
   Path:               lib_test

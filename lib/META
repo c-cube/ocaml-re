@@ -75,3 +75,4 @@ package "emacs" (
 )
 # OASIS_STOP
 
+ppx = "re_ppx"
